@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Email Application</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <style>
+        .alert {
+            background-color: #4CAF50;
+        }
+        @media (max-width: 768px) {
+            .form-control-lg {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var alertBox = document.getElementById('alert-box');
+            if (alertBox) {
+                setTimeout(function() {
+                    alertBox.style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+</head>
+<body>
+    <form action="sendMail" method="post">
+        <section class="vh-100" style="background-color: #2779e2;">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-xl-8 col-lg-9 col-md-10 col-sm-12">
+                        <h1 class="text-white mb-4 text-center">Email Sending App</h1>
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="row align-items-center pt-4 pb-3 px-3">
+                                <div class="col-md-3">
+                                    <h6 class="mb-0">Email To</h6>
+                                </div>
+                                <div class="col-md-9">
+                                    <input type="email" class="form-control form-control-lg" placeholder="example@gmail.com" name="to" required />
+                                </div>
+                            </div>
+                            <hr class="mx-n3">
+                            <div class="row align-items-center py-3 px-3">
+                                <div class="col-md-3">
+                                    <h6 class="mb-0">Subject</h6>
+                                </div>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control form-control-lg" placeholder="Application for ...." name="subject" required />
+                                </div>
+                            </div>
+                            <hr class="mx-n3">
+                            <div class="row align-items-center py-3 px-3">
+                                <div class="col-md-3">
+                                    <h6 class="mb-0">Message</h6>
+                                </div>
+                                <div class="col-md-9">
+                                    <textarea class="form-control" rows="3" placeholder="Message sent to the recruiter" name="message" required></textarea>
+                                </div>
+                            </div>
+                            <hr class="mx-n3">
+                            <div class="px-5 py-4">
+                                <th:block th:if="${session.msg}">
+                                    <div class="alert" id="alert-box">
+                                        <span th:text="${session.msg}"></span>
+                                    </div>
+                                    <th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+                                </th:block>
+                                <center>
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">Send Email</button>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+</body>
+</html>
