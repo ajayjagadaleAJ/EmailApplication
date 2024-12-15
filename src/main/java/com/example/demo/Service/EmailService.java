@@ -23,7 +23,7 @@ public class EmailService {
 	            
 	            // Define the sender's email and name
 	            String senderName = "Ajay Jagadale";
-	            String senderEmail = "ajayhjagadale.sknsits.comp@gmail.com";
+	            String senderEmail = "abc@gmail.com";  //Enter your email here
 	            String fromAddress = String.format("%s <%s>", senderName, senderEmail);
 	            
 	            
